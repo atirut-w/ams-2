@@ -11,10 +11,65 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_f82jf")
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 text = "Load AGL log"
 
-[connection signal="pressed" from="Button" to="." method="_load_agl"]
+[node name="ScrollContainer" type="ScrollContainer" parent="HSplitContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="HSplitContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/ScrollContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/ScrollContainer/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HSplitContainer/ScrollContainer/PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Name"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HSplitContainer/ScrollContainer/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HSplitContainer/ScrollContainer/PanelContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Time"
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="HSplitContainer/ScrollContainer/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HSplitContainer/ScrollContainer/PanelContainer/HBoxContainer/VBoxContainer4"]
+layout_mode = 2
+text = "Type"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="HSplitContainer/ScrollContainer/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HSplitContainer/ScrollContainer/PanelContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "Late?"
+
+[connection signal="pressed" from="HSplitContainer/Button" to="." method="_load_agl"]
