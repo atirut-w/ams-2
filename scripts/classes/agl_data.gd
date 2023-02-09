@@ -19,8 +19,6 @@ func load_log(file: FileAccess) -> void:
 			event.type = (Event.EventType.TimeIn if tokens[10] == "Time In" else Event.EventType.TimeOut)
 			
 			events.append(event)
-	
-	breakpoint
 
 
 func _from_tis620(bytes: PackedByteArray) -> String:
