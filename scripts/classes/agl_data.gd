@@ -2,17 +2,28 @@ class_name AGLData
 extends RefCounted
 
 
-var device_model: String
-var device_uid: String
-var data_type: DataType
-
-enum DataType {
-	AttendLog,
-}
+var events: Array
 
 
 func load_log(file: FileAccess) -> void:
-	while file.get_position() < file.get_length():
-		var line := file.get_csv_line(PackedByteArray([0x09]).get_string_from_ascii())
-		if not (line[0].begins_with("#") || line[0].begins_with("No")):
-			breakpoint
+	var converted := _from_tis620(file.get_buffer(1024))
+	
+	breakpoint
+
+
+func _from_tis620(bytes: PackedByteArray) -> String:
+	var converted: PackedByteArray
+	
+	for byte in bytes:
+		if byte >= 0xa0 && byte <= 0xff:
+			converted.append(byte & 0xf)
+			converted.append(0xe0)
+		else:
+			converted.append(byte)
+			converted.append(0)
+	
+	return converted.get_string_from_utf16()
+
+
+class Event:
+	var name: String
