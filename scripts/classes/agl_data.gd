@@ -13,6 +13,8 @@ func load_log(file: FileAccess) -> void:
 			pass # TODO: Metadata
 		elif !line.begins_with("No"):
 			var tokens := line.split("\t", false)
+			assert(tokens.size() == 11, "bad data: " + line)
+			
 			var event := Event.new()
 			event.name = tokens[3].rstrip(" ")
 			event.time = Time.get_unix_time_from_datetime_string(tokens[9].replace("  ", "T"))
