@@ -1,18 +1,10 @@
 extends Control
 
 
-@onready var file_menu := %File
-@onready var help_menu := %Help
-
 @onready var names := %VBoxContainer
 @onready var times := %VBoxContainer2
 @onready var types := %VBoxContainer4
 @onready var lates := %VBoxContainer3
-
-
-func _ready() -> void:
-	file_menu.id_pressed.connect(_file_menu_id_pressed)
-	help_menu.id_pressed.connect(_help_menu_id_pressed)
 
 
 func _file_menu_id_pressed(id: int) -> void:

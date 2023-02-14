@@ -90,13 +90,11 @@ layout_mode = 2
 size_flags_vertical = 4
 
 [node name="File" type="PopupMenu" parent="VBoxContainer/PanelContainer/MenuBar"]
-unique_name_in_owner = true
 item_count = 1
 item_0/text = "Quit"
 item_0/id = 0
 
 [node name="Help" type="PopupMenu" parent="VBoxContainer/PanelContainer/MenuBar"]
-unique_name_in_owner = true
 item_count = 1
 item_0/text = "About"
 item_0/id = 0
@@ -110,3 +108,5 @@ layout_mode = 2
 text = "Test"
 
 [connection signal="pressed" from="HSplitContainer/Button" to="." method="_load_agl"]
+[connection signal="id_pressed" from="VBoxContainer/PanelContainer/MenuBar/File" to="." method="_file_menu_id_pressed"]
+[connection signal="id_pressed" from="VBoxContainer/PanelContainer/MenuBar/Help" to="." method="_help_menu_id_pressed"]
