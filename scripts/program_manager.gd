@@ -1,6 +1,13 @@
 extends Node
 
 
+const late_limit := {
+	"hour": 7,
+	"minute": 30,
+	"second": 0,
+}
+
+
 func _ready() -> void:
 	get_viewport().gui_embed_subwindows = false
 
@@ -16,3 +23,16 @@ func pick_file(filters: Array[String]) -> FileAccess:
 	var path := await dialog.file_selected as String
 	
 	return FileAccess.open(path, FileAccess.READ)
+
+
+func is_late(time: int) -> bool:
+	var t_dict := Time.get_time_dict_from_unix_time(time)
+	
+	if t_dict.hour > late_limit.hour:
+		return true
+	elif t_dict.minute > late_limit.minute:
+		return true
+	elif t_dict.second > late_limit.second:
+		return true
+	
+	return false

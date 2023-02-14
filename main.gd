@@ -23,11 +23,7 @@ func _load_agl() -> void:
 		etime.text = Time.get_time_string_from_unix_time(event.time)
 		etype.text = event.EventType.find_key(event.type)
 		
-		var time_d := Time.get_time_dict_from_unix_time(event.time)
-		if (time_d.hour > 7 || (time_d.hour == 7 && time_d.minute > 30)) && event.type == AGLData.Event.EventType.TimeIn:
-			elate.text = "Yes"
-		else:
-			elate.text = "No"
+		elate.text = "Yes" if event.type == event.EventType.TimeIn && ProgramManager.is_late(event.time) else "No"
 		
 		names.add_child(ename)
 		times.add_child(etime)
