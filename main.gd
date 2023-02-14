@@ -2,6 +2,7 @@ extends Control
 
 
 @onready var file_menu := %File
+@onready var help_menu := %Help
 
 @onready var names := %VBoxContainer
 @onready var times := %VBoxContainer2
@@ -11,14 +12,26 @@ extends Control
 
 func _ready() -> void:
 	file_menu.id_pressed.connect(_file_menu_id_pressed)
+	help_menu.id_pressed.connect(_help_menu_id_pressed)
 
 
 func _file_menu_id_pressed(id: int) -> void:
-	print("ID Pressed: %d" % id)
-	
 	match id:
 		0:
 			get_tree().quit()
+
+
+func _help_menu_id_pressed(id: int) -> void:
+	match id:
+		0:
+			var dialog := AcceptDialog.new()
+			dialog.title = "About"
+			dialog.dialog_text = "AMS 2: Attendant Management System, rewritten.\rMade by Atirut Wattanamongkol"
+			
+			add_child(dialog)
+			dialog.popup_centered()
+			await dialog.confirmed
+			remove_child(dialog)
 
 
 func _load_agl() -> void:
