@@ -12,7 +12,8 @@ func _load_agl() -> void:
 	var data := AGLData.new()
 	data.load_log(file)
 	
-	for event in data.events:
+	for i in 256:
+		var event := data.events[i]
 		var ename := Label.new()
 		var etime := Label.new()
 		var etype := Label.new()
