@@ -30,9 +30,11 @@ func is_late(time: int) -> bool:
 	
 	if t_dict.hour > late_limit.hour:
 		return true
-	elif t_dict.minute > late_limit.minute:
-		return true
-	elif t_dict.second > late_limit.second:
-		return true
+	elif t_dict.hour == late_limit.hour:
+		if t_dict.minute > late_limit.minute:
+			return true
+		elif t_dict.minute == late_limit.minute:
+			if t_dict.second > late_limit.second:
+				return true
 	
 	return false
