@@ -1,6 +1,8 @@
 extends Node
 
 
+signal data_changed
+
 const late_limit := {
 	"hour": 7,
 	"minute": 30,
