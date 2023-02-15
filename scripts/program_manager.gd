@@ -19,7 +19,7 @@ func _ready() -> void:
 	get_viewport().gui_embed_subwindows = false
 
 
-func pick_file(filters: Array[String]) -> FileAccess:
+func pick_file(filters: Array[String] = []) -> FileAccess:
 	var dialog := FileDialog.new()
 	dialog.access = FileDialog.ACCESS_FILESYSTEM
 	dialog.file_mode = FileDialog.FILE_MODE_OPEN_FILE
