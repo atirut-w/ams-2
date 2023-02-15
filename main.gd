@@ -11,6 +11,10 @@ func _file_menu_id_pressed(id: int) -> void:
 	match id:
 		0:
 			get_tree().quit()
+		1:
+			var agl := AGLData.new()
+			agl.load_log(await ProgramManager.pick_file(["*.txt"]))
+			ProgramManager.agl_data = agl
 
 
 func _help_menu_id_pressed(id: int) -> void:

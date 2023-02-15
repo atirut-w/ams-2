@@ -33,9 +33,11 @@ layout_mode = 2
 size_flags_vertical = 4
 
 [node name="File" type="PopupMenu" parent="VBoxContainer/MenuBar"]
-item_count = 1
-item_0/text = "Quit"
-item_0/id = 0
+item_count = 2
+item_0/text = "Load AGL log"
+item_0/id = 1
+item_1/text = "Quit"
+item_1/id = 0
 
 [node name="Help" type="PopupMenu" parent="VBoxContainer/MenuBar"]
 item_count = 1
