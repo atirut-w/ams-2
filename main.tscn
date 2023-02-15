@@ -48,9 +48,9 @@ item_0/id = 0
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="VBoxContainer/TabContainer"]
+[node name="Test Tab" type="Label" parent="VBoxContainer/TabContainer"]
 layout_mode = 2
-text = "Test"
+text = "This is a test tab"
 
 [connection signal="id_pressed" from="VBoxContainer/MenuBar/File" to="." method="_file_menu_id_pressed"]
 [connection signal="id_pressed" from="VBoxContainer/MenuBar/Help" to="." method="_help_menu_id_pressed"]
