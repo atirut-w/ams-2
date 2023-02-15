@@ -3,6 +3,11 @@ extends Node
 
 signal data_changed
 
+var agl_data: AGLData:
+	set(value):
+		agl_data = value
+		data_changed.emit()
+
 const late_limit := {
 	"hour": 7,
 	"minute": 30,
