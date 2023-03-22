@@ -18,7 +18,11 @@ func _help_menu_id_pressed(id: int) -> void:
 			dialog.title = "About"
 			dialog.dialog_text = "AMS 2: Attendant Management System, rewritten.\rMade by Atirut Wattanamongkol"
 			
+			var on_closed := func():
+				dialog.queue_free()
+			
+			dialog.canceled.connect(on_closed)
+			dialog.confirmed.connect(on_closed)
+			
 			add_child(dialog)
 			dialog.popup_centered()
-			await dialog.confirmed
-			remove_child(dialog)
