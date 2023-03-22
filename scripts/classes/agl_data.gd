@@ -16,6 +16,7 @@ func load_log(file: FileAccess) -> void:
 			assert(tokens.size() == 11, "bad data: " + line)
 			
 			var event := Event.new()
+			event.employee_id = int(tokens[3])
 			event.name = tokens[3].rstrip(" ")
 			event.time = Time.get_unix_time_from_datetime_string(tokens[9].replace("  ", "T"))
 			event.type = (Event.EventType.TimeIn if tokens[10] == "Time In" else Event.EventType.TimeOut)
@@ -40,6 +41,7 @@ func _from_tis620(bytes: PackedByteArray) -> String:
 
 
 class Event:
+	var employee_id: int
 	var name: String
 	var time: int
 	var type: EventType
